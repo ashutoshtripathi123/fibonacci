@@ -161,6 +161,14 @@ location="${src.dir}/test"
         <include name="**/*.java" />
       </fileset>
     </cobertura-report>
+	<cobertura-report format="xml" datafile="${cobertura.ser.file}" destdir="${report.cobertura.dir}">
+      <fileset dir="${src.dir}">
+        <include name="**/*.java" />
+      </fileset>
+	  <fileset dir="${src.test.dir}">
+        <include name="**/*.java" />
+      </fileset>
+    </cobertura-report>
   </target>
   <!-- -->
   <target name="report.checkstyle" description="Generate a report of code convention violations.">
