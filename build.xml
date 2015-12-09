@@ -19,6 +19,11 @@
   <property name="htm.dir" location="${basedir}/html" />
   <property name="report.dir" location="${basedir}/report" />
   <property name="report.checkstyle.dir" location="${report.dir}/checkstyle" />
+
+<property
+name="src.test.dir"
+location="${src.dir}/test" 
+/>
   <property name="report.junit.dir" location="${report.dir}/junit" />
   <property name="report.findbugs.dir" location="${report.dir}/findbugs" />
   <property name="report.cobertura.dir" location="${report.dir}/cobertura" />
@@ -28,7 +33,7 @@
   <property name="cobertura.ser.file" location="${report.temp.dir}/cobertura.ser" />
   <path id="run.classpath">
     <pathelement path="${bin.dir}" />
-    <pathelement path="${basedir}/lib/junit-4.12.jar" />
+    <pathelement path="${basedir}/junit-4.12.jar" />
   </path>
   <path id="cobertura.classpath">
     <path refid="run.classpath" />
@@ -125,7 +130,7 @@
       <formatter type="plain" />
       <formatter type="xml" />
       <batchtest todir="${report.temp.dir}">
-        <fileset dir="${src.dir}">
+        <fileset dir="${src.test.dir}">
           <include name="**/*Test*.java" />
         </fileset>
       </batchtest>
@@ -150,6 +155,9 @@
   <target name="report.cobertura" depends="junit" description="Generate an HTML report on Cobertura.">
     <cobertura-report format="html" datafile="${cobertura.ser.file}" destdir="${report.cobertura.dir}">
       <fileset dir="${src.dir}">
+        <include name="**/*.java" />
+      </fileset>
+	  <fileset dir="${src.test.dir}">
         <include name="**/*.java" />
       </fileset>
     </cobertura-report>
