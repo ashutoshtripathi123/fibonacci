@@ -17,7 +17,7 @@ public class FibonacciUI {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		while (keepRunning == true) {
 			System.out.println("Enter Integer to Calculate Fibonacci value, or q to quit:");
-			String inputString
+			String inputString;
 			try {
 				inputString = br.readLine();
 			} catch (IOException e) {
